@@ -1,5 +1,5 @@
 <?xml version="1.0" ?> 
-<project name="AntExample1" default="war">
+<project name="AntExample1" default="deploy">
 
 	<path id="compile.classpath">
 		<fileset dir="WebContent/WEB-INF/lib">
@@ -25,6 +25,10 @@
 			<classes dir="build/classes"/>
 		</war>
 	</target>
+
+	<target name="deploy" depends="war">
+                <copy file="/home/gkulshre/AntExample1/dist/AntExample.war" todir="/var/lib/tomcat8/webapps" overwrite="true"/>
+        </target>
 	
 	<target name="clean">
 		<delete dir="dist" />
